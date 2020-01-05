@@ -11,7 +11,7 @@
 	return _specifiers;
 }
 
-- (void)apply {
+- (void)saveTapped {
 	[self.view endEditing:YES];
 	CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.yaypixxo.cnon/respring"), NULL, NULL, YES);
 }

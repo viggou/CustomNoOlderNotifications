@@ -42,7 +42,7 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>action</key>
-			<string>apply</string>
+			<string>saveTapped</string>
 			<key>label</key>
 			<string>Respring</string>
 		</dict>
