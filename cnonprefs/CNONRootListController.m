@@ -1,24 +1,19 @@
 #include "CNONRootListController.h"
-//#import <spawn.h>
 
 @implementation CNONRootListController
 
 - (NSArray *)specifiers {
 	if (!_specifiers) {
-		_specifiers = [[self loadSpecifiersFromPlistName:@"Root" target:self] retain];
+		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
 	}
 
 	return _specifiers;
 }
 
-- (void)saveTapped {
-	[self.view endEditing:YES];
-	CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.yaypixxo.cnon/respring"), NULL, NULL, YES);
-}
-
-- (void)openTwitter {
+-(void)openTwitter {
 	NSURL *url;
 
+	// check which of these apps are installed
 	if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tweetbot:"]]) {
 		url = [NSURL URLWithString:@"tweetbot:///user_profile/Ra1nPix"];
 	} 
@@ -35,8 +30,15 @@
 		url = [NSURL URLWithString:@"https://mobile.twitter.com/Ra1nPix"];
 	}
 
-	// [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+	// open my profile in the app chosen above
+	// if you're compiling with an iOS 10 or lower sdk you can leave out options:@{} and completionHandler:nil
 	[[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+}
+
+// send respring notification
+-(void)saveTapped {
+	[self.view endEditing:YES];
+	CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.yaypixxo.cnon/respring"), NULL, NULL, YES);
 }
 
 @end
