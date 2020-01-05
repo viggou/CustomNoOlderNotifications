@@ -1,12 +1,12 @@
 // respring function
-@interface FBSystemService : NSObject
+/*@interface FBSystemService : NSObject
 +(id)sharedInstance;
 -(void)exitAndRelaunch:(bool)arg1;
 @end
 
 static void RespringDevice() {
     [[%c(FBSystemService) sharedInstance] exitAndRelaunch:YES];
-}
+}*/
 
 // headers
 @interface SBUILegibilityLabel : UIView
@@ -67,5 +67,5 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, notificationCallback, (CFStringRef)nsNotificationString, NULL, CFNotificationSuspensionBehaviorCoalesce);
 
     // respring notification listener
-    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)RespringDevice, CFSTR("com.yaypixxo.cnon/respring"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+    //CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)RespringDevice, CFSTR("com.yaypixxo.cnon/respring"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
 }

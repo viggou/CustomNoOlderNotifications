@@ -36,9 +36,9 @@
 }
 
 // send respring notification
--(void)saveTapped {
+-(void)apply {
 	[self.view endEditing:YES];
-	CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.yaypixxo.cnon/respring"), NULL, NULL, YES);
+	//CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), CFSTR("com.yaypixxo.cnon/respring"), NULL, NULL, YES);
 }
 
 @end
