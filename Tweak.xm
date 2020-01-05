@@ -1,3 +1,14 @@
+// respring function
+@interface FBSystemService : NSObject
++(id)sharedInstance;
+-(void)exitAndRelaunch:(bool)arg1;
+@end
+
+static void RespringDevice() {
+    [[%c(FBSystemService) sharedInstance] exitAndRelaunch:YES];
+}
+
+// headers
 @interface SBUILegibilityLabel : UIView
 @property (nonatomic,copy) NSString *string;
 @property (assign,nonatomic) long long textAlignment; 
@@ -25,54 +36,36 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
     NSString *eCustomText = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"customText" inDomain:nsDomainString];
 
     enabled = (eEnabled) ? [eEnabled boolValue]:NO;
-    customText = eCustomText; //(eCustomText) ? [eCustomText value]:@"";
+    customText = eCustomText;
 }
 
-/*#ifndef kCFCoreFoundationVersionNumber_iOS_13_0
+// check iOS version
+#ifndef kCFCoreFoundationVersionNumber_iOS_13_0
 #define kCFCoreFoundationVersionNumber_iOS_13_0 1665.15
 #endif
 
-#define kSLSystemVersioniOS13 kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_13_0*/
+#define kSLSystemVersioniOS13 kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_13_0
 
-/*%group ios13
-
-%hook NCNotificationListSectionRevealHintView
-
--(void)setRevealHintTitle:(SBUILegibilityLabel *)arg1 {
-	if (enabled) {
-		arg1 = customText;
-	}
-}
-
-%end
-
-%end*/
-
-//%group ios12
-
+// hook class
 %hook NCNotificationListSectionRevealHintView
 
 -(void)didMoveToWindow {
 	%orig;
 	if (enabled) {
 		self.revealHintTitle.string = customText;
-		self.revealHintTitle.textAlignment = 1;
+		if (kSLSystemVersioniOS13) {
+			self.revealHintTitle.textAlignment = 1;
+		}
 	}
 }
 
 %end
 
-//%end
-
 %ctor {
-	// check iOS version
-    /*if (kSLSystemVersioniOS13) {
-        %init(ios13);
-    }
-    else {
-        %init(ios12);
-    }*/
-
+	// prefs changed listener
     notificationCallback(NULL, NULL, NULL, NULL, NULL);
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, notificationCallback, (CFStringRef)nsNotificationString, NULL, CFNotificationSuspensionBehaviorCoalesce);
+
+    // respring notification listener
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)RespringDevice, CFSTR("com.yaypixxo.cnon/respring"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
 }

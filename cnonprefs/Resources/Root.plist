@@ -44,7 +44,7 @@
 			<key>action</key>
 			<string>apply</string>
 			<key>label</key>
-			<string>Apply</string>
+			<string>Respring</string>
 		</dict>
 		<dict>
 			<key>cell</key>
