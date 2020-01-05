@@ -1,5 +1,5 @@
 #include "CNONRootListController.h"
-#import <spawn.h>
+//#import <spawn.h>
 
 @implementation CNONRootListController
 
@@ -13,10 +13,10 @@
 
 - (void)respring:(id)sender {
 	[self.view endEditing:YES];
-	[NSThread sleepForTimeInterval:0.5f];
+	/*[NSThread sleepForTimeInterval:0.5f];
 	pid_t pid;
     const char* args[] = {"killall", "backboardd", NULL};
-    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);
+    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);*/
 }
 
 - (void)openTwitter {
@@ -24,18 +24,22 @@
 
 	if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tweetbot:"]]) {
 		url = [NSURL URLWithString:@"tweetbot:///user_profile/Ra1nPix"];
-	} else if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitterrific:"]]) {
+	} 
+	else if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitterrific:"]]) {
 		url = [NSURL URLWithString:@"twitterrific:///profile?screen_name=Ra1nPix"];
-	} else if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tweetings:"]]) {
+	} 
+	else if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tweetings:"]]) {
 		url = [NSURL URLWithString:@"tweetings:///user?screen_name=Ra1nPix"];
-	} else if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter:"]]) {
+	} 
+	else if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter:"]]) {
 		url = [NSURL URLWithString:@"twitter://user?screen_name=Ra1nPix"];
-	} else {
+	} 
+	else {
 		url = [NSURL URLWithString:@"https://mobile.twitter.com/Ra1nPix"];
 	}
 
 	// [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
-	[[UIApplication sharedApplication] openURL:url];
+	[[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
 }
 
 @end

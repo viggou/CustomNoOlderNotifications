@@ -1,7 +1,7 @@
 Package: com.yaypixxo.cnon
 Name: CustomNoOlderNotifications
 Depends: mobilesubstrate, preferenceloader
-Version: 2.1.0
+Version: 2.2.0
 Architecture: iphoneos-arm
 Description: Change the "No Older Notifications" text to a custom one!
 Icon: https://yaypixxo.com/assets/com.yaypixxo.cnon.png

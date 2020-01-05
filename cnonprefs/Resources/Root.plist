@@ -10,25 +10,25 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>com.yaypixxo.cnonprefs</string>
+			<string>com.yaypixxo.cnon</string>
 			<key>key</key>
 			<string>enabled</string>
 			<key>label</key>
 			<string>Enable</string>
 			<key>PostNotification</key>
-			<string>com.yaypixxo.cnonprefs/ReloadPrefs</string>
+			<string>com.yaypixxo.cnon/preferences.changed</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
-			<string>Type your custom message or leave blank to hide the text.</string>
+			<string>Type your custom text or leave blank to hide the text</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>defaults</key>
-			<string>com.yaypixxo.cnonprefs</string>
+			<string>com.yaypixxo.cnon</string>
 			<key>default</key>
 			<string></string>
 			<key>key</key>
@@ -36,7 +36,7 @@
 			<key>placeholder</key>
 			<string>custom text here</string>
 			<key>PostNotification</key>
-			<string>com.yaypixxo.cnonprefs/ReloadPrefs</string>
+			<string>com.yaypixxo.cnon/preferences.changed</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -44,13 +44,13 @@
 			<key>action</key>
 			<string>respring</string>
 			<key>label</key>
-			<string>Respring</string>
+			<string>Apply</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Follow me</string>
+			<string>Follow me on Twitter</string>
 		</dict>
 		<dict>
 			<key>action</key>
@@ -64,6 +64,6 @@
 		</dict>
 	</array>
 	<key>title</key>
-	<string>CNON</string>
+	<string>CustomNoOlderNotifications</string>
 </dict>
 </plist>
