@@ -1,10 +1,9 @@
 @interface SBUILegibilityLabel : UIView
 @property (nonatomic,copy) NSString *string;
+@property (assign,nonatomic) long long textAlignment; 
 @end
 
 @interface NCNotificationListSectionRevealHintView : UIView 
-//-(void)_updateHintTitle;
-//-(void)setRevealHintTitle;
 @property (nonatomic,retain)SBUILegibilityLabel *revealHintTitle;
 @end
 
@@ -57,6 +56,7 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 	%orig;
 	if (enabled) {
 		self.revealHintTitle.string = customText;
+		self.revealHintTitle.textAlignment = 1;
 	}
 }
 
