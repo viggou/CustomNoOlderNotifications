@@ -11,12 +11,8 @@
 	return _specifiers;
 }
 
-- (void)respring:(id)sender {
+- (void)apply {
 	[self.view endEditing:YES];
-	/*[NSThread sleepForTimeInterval:0.5f];
-	pid_t pid;
-    const char* args[] = {"killall", "backboardd", NULL};
-    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char* const*)args, NULL);*/
 }
 
 - (void)openTwitter {
